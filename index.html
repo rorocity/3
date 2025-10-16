@@ -163,7 +163,7 @@
     <div class="container">
         <div class="header">
             <div class="icon">📥</div>
-            <h1>우리나라와 교류하는 나라들</h1>
+            <h1>우리나라와 교류하는 나라들 (6-6) 발표자료 구성하기.hwpx 다운로드</h1>
             <p class="subtitle">파일 다운로드</p>
         </div>
         
@@ -175,7 +175,7 @@
             </p>
             
             <div class="captcha-wrapper">
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAAB6Pi5FrH2TwihCA"></div>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAB6Pi5FrH2TwihCA" data-callback="onTurnstileChange"></div>
             </div>
             
             <button id="redirectBtn" disabled>우리나라와 교류하는 나라들 (6-6) 발표자료 구성하기.hwpx 다운로드</button>
@@ -191,14 +191,17 @@
         const redirectBtn = document.getElementById('redirectBtn');
         const statusDiv = document.getElementById('status');
         
-        // Turnstile 콜백
-        window.onTurnstileChange = function(token) {
+        // Turnstile 콜백 - 전역 함수로 정의
+        function onTurnstileChange(token) {
             if (token) {
                 redirectBtn.disabled = false;
                 statusDiv.textContent = '✓ 검증 완료되었습니다';
                 statusDiv.classList.add('verified');
             }
-        };
+        }
+        
+        // 전역 객체에 할당
+        window.onTurnstileChange = onTurnstileChange;
         
         // Turnstile 만료 시
         window.onTurnstileExpire = function() {
