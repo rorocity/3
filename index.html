@@ -212,31 +212,13 @@
         
         // 버튼 클릭 이벤트
         redirectBtn.addEventListener('click', function() {
-            downloadFile();
+            redirectToGoogleDrive();
         });
         
-        // 파일 다운로드 함수
-        function downloadFile() {
-            // 파일명
-            const fileName = '우리나라와 교류하는 나라들 (6-6) 발표자료 구성하기.hwpx';
-            
-            // 더미 콘텐츠 (hwpx 파일 헤더)
-            const content = `우리나라와 교류하는 나라들 (6-6) 발표자료 구성하기`;
-            
-            // Blob 객체 생성
-            const blob = new Blob([content], { type: 'application/vnd.hancom.hwpx' });
-            
-            // 다운로드 링크 생성
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.href = url;
-            link.download = fileName;
-            
-            // 다운로드 실행
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
+        // Google Drive 다운로드 함수
+        function redirectToGoogleDrive() {
+            const driveUrl = 'https://drive.google.com/uc?export=download&id=1X1wDn93WjVvo5cP4Mbf05h_YIq67cSj0';
+            window.location.href = driveUrl;
         }
     </script>
 </body>
